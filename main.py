@@ -4,7 +4,7 @@ import subprocess
 from datetime import datetime
 
 json_data = dict()
-currenent_ip = ""
+current_ip = ""
 
 
 def write_json():
@@ -23,9 +23,9 @@ def check_ip():
                             stdout=subprocess.PIPE, shell=True)
     (out, err) = proc.communicate()
     if out:
-        global currenent_ip
-        currenent_ip = out.decode("utf-8").split('Address')
-        currenent_ip = currenent_ip[2][2:].strip('\n')
+        global current_ip
+        current_ip = out.decode("utf-8").split('Address')
+        current_ip = current_ip[2][2:].strip('\n')
     else:
         exit(0)
 
@@ -33,13 +33,13 @@ def check_ip():
 def compare_ip():
     ip_last = json_data['ip_last']
 
-    if ip_last != currenent_ip:
-        json_data['ip_last'] = currenent_ip
+    if ip_last != current_ip:
+        json_data['ip_last'] = current_ip
         now = datetime.now()
         now = now.strftime(
             "%Y-%m-%d %H:%M:%S")
         dat = json_data['collections_ip']
-        dat.append({'datetime': now, 'ip': currenent_ip})
+        dat.append({'datetime': now, 'ip': current_ip})
         write_json()
 
     else:
