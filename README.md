@@ -1,5 +1,6 @@
 Simple log of IP changes
-1. Install `nslookup`
+1. Install `nslookup`: sudo apt-get install dnsutils
+
 
 2. Use crontab for monitoring
     e.g. `*/10 * * * * python3 <path_to_file>/main.py >/dev/null 2>&1`
