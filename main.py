@@ -9,7 +9,7 @@ current_ip = ""
 '''
     path to file e.g. /home/<user>/PublicIPChangeLogToJson/
 '''
-path_to_file = ""
+path_to_file = "/root/PublicIPChangeLogToJson/"
 
 file_to_write = path_to_file+"collections_ip.json"
 
